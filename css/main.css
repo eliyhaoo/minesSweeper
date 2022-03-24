@@ -1,0 +1,35 @@
+body{
+    background-color: wheat;
+    text-align: center;
+    transition: 400ms
+}
+
+table {
+    color:rgb(219, 138, 15);
+    max-width: 600px;
+    max-height: 500px;
+    display: inline-block;
+   
+
+    
+}
+
+
+.cell {
+    width: 30px;
+    height: 30px;
+    min-width: 10px;
+    min-height: 10px;
+    text-align: center;
+    font-size: 1.5em;
+    background-color: yellow;
+
+}
+
+.hit{
+    background-color:red;
+    
+}
+.hide {
+    background-color:black;
+}
