@@ -8,21 +8,25 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body onload="init()">
-    <h1>game!</h1>
-    <div class="levels">
-        <input onclick="init(this)" name="level" type="radio" id="beginner"value="0" checked>
-        <label for="beginner">Beginner</label>
-        <input onclick="init(this)" name="level" type="radio" id="medium"value="1">
-        <label for="medium">medium</label>
-        <input onclick="init(this)" name="level" type="radio" id="expert"value="2">
-        <label for="expert">Expert</label>
-    </div>
-    <div class="lives">lives <span></span></div>
-    <div class="timer">Timepass: <span></span></div>
-    <div class="icon"><button onclick="resetLevel(this)">😋</button></div>
-    <div class="hints"><button onclick="startHints(this)"><span><img src="imgs/hint_on.png" alt=""></span>  <span><img src="imgs/hint_on.png" alt=""></span>  <span><img src="imgs/hint_on.png" alt=""></span></button></div>
-   <div class="table"></div>
+    <h1>Minesweeper</h1>
+    <div class="game">
+
+        <div class="levels">
+            <input onclick="init(this)" name="level" type="radio" id="beginner"value="0" checked>
+            <label for="beginner">Beginner</label>
+            <input onclick="init(this)" name="level" type="radio" id="medium"value="1">
+            <label for="medium">medium</label>
+            <input onclick="init(this)" name="level" type="radio" id="expert"value="2">
+            <label for="expert">Expert</label>
+        </div>
+        <div class="lives">lives <span></span> </div>
+        <div class="bestScore" >Best Time:<span></span></div>
+        <div class="timer">Time: <span></span></div>
+        <div class="icon"><button onclick="resetLevel(this)">😋</button></div>
+        <div class="hints"><button onclick="startHints(this)"><span><img src="imgs/hint_on.png" alt=""></span>  <span><img src="imgs/hint_on.png" alt=""></span>  <span><img src="imgs/hint_on.png" alt=""></span></button></div>
+        <div class="table"></div>
     </table>
+</div>
     <script src="js/utils.js"></script>
     <script src="js/main.js"></script>
 </body>

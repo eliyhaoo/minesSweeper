@@ -1,11 +1,19 @@
 body{
-    background-color: wheat;
+
+    background-image:url('https://img.itch.zone/aW1nLzMzODYxNzIucG5n/original/YN33A5.png');
+    background-size: 1500px ;
     text-align: center;
-    transition: 400ms
+    transition: 400ms;
+    background-repeat: no-repeat;
+
 }
 
+
+
+
 table {
-    color:rgb(219, 138, 15);
+    color:#fff237;
+    text-decoration: double;
     max-width: 600px;
     max-height: 500px;
     display: inline-block;
@@ -24,7 +32,7 @@ table {
     min-height: 10px;
     text-align: center;
     font-size: 1.5em;
-    background-color: yellow;
+    background-color: #3f352673;
 
 }
 
@@ -33,5 +41,94 @@ table {
     
 }
 .hide {
-    background-color:black;
+    background-color:#d2c4c4;
+    border-bottom: 2px solid #7B7B7B;
+    border-left: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    border-right: 2px solid #7B7B7B;
+}
+
+.game{
+   width: 600px;
+   height: 602px;
+   margin:auto;
+  
+    background-color: rgba(100, 148, 237, 0.342);
+    border-bottom: 2px solid #7B7B7B;
+    border-left: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    border-right: 2px solid #7B7B7B;
+}
+    
+
+.hints button{
+    position:absolute;
+    bottom: 514px;
+    left: 420px;
+
+}
+
+.bestScore {
+    border-bottom: 2px solid #7B7B7B;
+    border-left: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    border-right: 2px solid #7B7B7B;
+    width: 59px;
+    height: 55px;
+    display: inline-block;
+    position:absolute;
+    left: 148px
+
+}
+
+.timer {
+    border-bottom: 2px solid #7B7B7B;
+    border-left: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    border-right: 2px solid #7B7B7B;
+    width: 50px;
+    height: 48px;
+    display: inline-block;
+    margin-left: 547px;
+    
+    
+}
+
+h1{
+     
+ font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+  
+}
+
+
+
+button{
+   
+  
+    
+    border-bottom: 2px solid #7B7B7B;
+    border-left: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    border-right: 2px solid #7B7B7B;
+}
+
+.levels{
+    display: inline-block;
+    background-color: #c5d0e2;
+    border-bottom: 2px solid #7B7B7B;
+    border-left: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    border-right: 2px solid #7B7B7B;
+    width: 407px;
+}
+
+.lives{
+    display: inline-block;
+    border-bottom: 2px solid #7B7B7B;
+    border-left: 2px solid #ffffff;
+    border-top: 2px solid #ffffff;
+    border-right: 2px solid #7B7B7B; 
+    width:185px;
+    margin:-2px
 }
