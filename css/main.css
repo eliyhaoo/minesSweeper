@@ -10,8 +10,10 @@ table {
     max-height: 500px;
     display: inline-block;
    
-
-    
+}
+.hints img {
+    width: 12px;
+    height: 22px;
 }
 
 

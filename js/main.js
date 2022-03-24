@@ -4,7 +4,8 @@ const MINE = '💣'
 const FLAG = '🚩'
 const WRONG = '❌'
 const LIVE = '❤️'
-const HINT = '💡'
+const HINT_ON_STR = '<img src="imgs/hint_on.png" alt="">'
+const HINT_OFF_STR = '<img src="imgs/hint_off.png" alt="">'
 
 var gTimeInterval
 
@@ -267,7 +268,6 @@ function updateLives() {
 
 function startHints(elBtnHints) {
     if (gGame.hintsCount) {
-        gGame.hintsCount--
         gGame.isHint = true
         updateHints(elBtnHints)
 
@@ -276,23 +276,9 @@ function startHints(elBtnHints) {
 
 
 function updateHints(elBtn) {
-
-    console.log('elbtn', elBtn);
-    var span = elBtn.querySelector(`:nth-child(${gGame.hintsCount})`)
-    console.log('btn', span);
-
-
-    // var strHints = ''
-    // switch (currentLives) {
-    //     case 1: strHints = LIVE
-    //         break
-    //     case 2: strHints = LIVE + LIVE
-    //         break
-    //     case 3: strHints = LIVE + LIVE + LIVE
-    //         break
-    // }
-    // gGame.hintsCount
-    // elBtnHints.innerHTML
+    var elHintsSpan = elBtn.querySelector(`:nth-child(${gGame.hintsCount})`)
+    gGame.hintsCount--
+    elHintsSpan.innerHTML = HINT_OFF_STR
 }
 
 
