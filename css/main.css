@@ -1,14 +1,12 @@
 body{
 
     background-image:url('https://img.itch.zone/aW1nLzMzODYxNzIucG5n/original/YN33A5.png');
-    background-size: 1500px ;
+    background-size: cover ;
     text-align: center;
     transition: 400ms;
     background-repeat: no-repeat;
 
 }
-
-
 
 
 table {
@@ -18,6 +16,11 @@ table {
     max-height: 500px;
     display: inline-block;
    
+}
+
+.hints button{
+  display: inline-block;
+
 }
 .hints img {
     width: 12px;
@@ -33,6 +36,7 @@ table {
     text-align: center;
     font-size: 1.5em;
     background-color: #3f352673;
+  
 
 }
 
@@ -59,25 +63,24 @@ table {
     border-top: 2px solid #ffffff;
     border-right: 2px solid #7B7B7B;
 }
-    
 
-.hints button{
-    position:absolute;
-    bottom: 514px;
-    left: 420px;
+.times {
+    background-color: #ecabab;
+    height:60px
 
 }
+
+
 
 .bestScore {
     border-bottom: 2px solid #7B7B7B;
     border-left: 2px solid #ffffff;
     border-top: 2px solid #ffffff;
     border-right: 2px solid #7B7B7B;
-    width: 59px;
+    width: 60px;
     height: 55px;
     display: inline-block;
-    position:absolute;
-    left: 148px
+    margin-right: 50px;
 
 }
 
@@ -86,10 +89,14 @@ table {
     border-left: 2px solid #ffffff;
     border-top: 2px solid #ffffff;
     border-right: 2px solid #7B7B7B;
-    width: 50px;
-    height: 48px;
+    width: 60px;
+    height: 55px;
     display: inline-block;
-    margin-left: 547px;
+    /* margin-right: 50px; */
+
+
+   
+    /* margin-left: 547px; */
     
     
 }

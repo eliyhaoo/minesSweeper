@@ -60,7 +60,6 @@ var gGame = {
 function init(levelSelect = 0) {
     resetGame()
     var copyOfgLevels = gLevels.slice()
-    console.log('copy', copyOfgLevels);
     var selectedLevelIdx = (levelSelect) ? levelSelect.value : levelSelect
     gGame.selectedLevel = copyOfgLevels[selectedLevelIdx]
     gBoard = createMat(gGame.selectedLevel.size, gGame.selectedLevel.size)
@@ -68,7 +67,7 @@ function init(levelSelect = 0) {
     printMat(gBoard, '.table')
 
 
-    var elBestScore = document.querySelector('.lives .bestScore')
+    var elBestScore = document.querySelector('.bestScore span')
     if (gBestScore[selectedLevelIdx].bestTime === 100 + ':' + 100){
         elBestScore.innerText = 0 + ':' + 0
     }else  elBestScore.innerText = gBestScore[selectedLevelIdx].bestTime
@@ -76,7 +75,6 @@ function init(levelSelect = 0) {
 }
 
 function printMat(mat, selector) {
-    console.log('mat', mat);
     var strHTML = '<table border="1"><tbody>';
     for (var i = 0; i < mat.length; i++) {
         strHTML += '<tr>';
@@ -95,7 +93,6 @@ function printMat(mat, selector) {
                 var hide = ' hide'
             }
             if (!gGame.isOn) {
-                console.log('game is over!');
                 if (cell.isMarked) {
                     if (cell.isMine) {
                         cellContent = MINE
@@ -153,16 +150,17 @@ function cellClicked(elCell, i, j) {
     elCell.classList.remove('hide')
     cell.isShown = true
     gGame.shownCount++
-    console.log('gGame.selectedLevel.mines', gGame.selectedLevel.mines);
-    if (cell.minesAroundCount === 0) openEmptyCellsAroundInModel(gBoard, { i, j })
+    if (cell.minesAroundCount === 0){
+        openEmptyCellsAroundInModel(gBoard, { i, j })
+        
+    } 
     printMat(gBoard, '.table')
 
     if (gGame.secsPassed === 0) {
-        console.log('number of mines', gGame.selectedLevel.mines);
+        startTimer()
         placeMinesRandom(gGame.selectedLevel.mines)
         setMinesNegsCount()
         printMat(gBoard, '.table')
-        startTimer()
     }
 
     if (gGame.markedCount === gGame.selectedLevel.mines) checkVictory()
@@ -185,10 +183,8 @@ function cellFlaged(ev, elCell, i, j) {
     if (gGame.markedCount === gGame.selectedLevel.mines) checkVictory()
 }
 
-// var counter = 0
+
 function openEmptyCellsAroundInModel(mat, location) {
-    // if (counter===400) return
-    // counter++
     for (var i = location.i - 1; i <= location.i + 1; i++) {
         if (i < 0 || i >= mat.length) continue;
         for (var j = location.j - 1; j <= location.j + 1; j++) {
@@ -197,14 +193,14 @@ function openEmptyCellsAroundInModel(mat, location) {
             if (!mat[i][j].minesAroundCount && !mat[i][j].isMarked && !mat[i][j].isMine && !mat[i][j].isShown) {
                 if (!mat[i][j].isShown) gGame.shownCount++
                 mat[i][j].isShown = true
-                console.log({i,j});
                 if (gGame.secsPassed){
                     openEmptyCellsAroundInModel(mat,{i,j})
                     
-                }  
+                }
             }
         }
     }
+   
 
 }
 
@@ -212,7 +208,7 @@ function openEmptyCellsAroundInModel(mat, location) {
 function startTimer() {
     var timeStart = new Date()
     updateClock(timeStart)
-    gTimeInterval = setInterval(updateClock, 1000, timeStart)
+    gTimeInterval = setInterval(updateClock, 100, timeStart)
 }
 
 function updateClock(timeStart) {
@@ -222,15 +218,16 @@ function updateClock(timeStart) {
     var sec = timePass.getSeconds()
     var min = timePass.getMinutes()
     var time = min + ':' + sec
+    var timeForgGame = min + '.' + sec
     elTimer.innerHTML = time
-    gGame.secsPassed = time
+    gGame.secsPassed = timeForgGame
+
 }
 
 function gameOver(pos) {
     clearInterval(gTimeInterval)
     var elIcon = document.querySelector('.icon button')
     elIcon.innerText = '🤯'
-    console.log('game over');
     gGame.isOn = false
     revealMines()
     printMat(gBoard, '.table', elCell)
@@ -239,11 +236,7 @@ function gameOver(pos) {
 }
 
 function checkVictory() {
-    console.log('checking vicotry');
-    console.log('gGame.shownCount', gGame.shownCount);
-    console.log('gGame.selectedLevel.mines', gGame.selectedLevel.mines);
     if (gGame.shownCount === gGame.selectedLevel.size ** 2 - gGame.selectedLevel.mines) {
-        console.log('checking inisde vicotry');
         clearInterval(gTimeInterval)
         checkBestScore()
         var elIcon = document.querySelector('.icon button')
@@ -315,7 +308,6 @@ function resetLevel() {
 function updateLives() {
     var elLives = document.querySelector('.lives span')
     var currentLives = gGame.lives
-    // console.log('currentLives',currentLives);
     var strLives = ''
     switch (currentLives) {
         case 1: strLives = LIVE
@@ -353,7 +345,6 @@ function showNeighbors(cellI, cellJ) {
     var neighbors = []
     gBoard[cellI][cellJ].isShown = true
     neighbors.push(gBoard[cellI][cellJ])
-    console.log('selected hint', gBoard[cellI][cellJ]);
     for (var i = cellI - 1; i <= cellI + 1; i++) {
         if (i < 0 || i >= gBoard.length) continue;
         for (var j = cellJ - 1; j <= cellJ + 1; j++) {
@@ -380,11 +371,7 @@ function showNeighbors(cellI, cellJ) {
 
 function checkBestScore() {
     var selectedLevel = gGame.selectedLevel.level - 1
-    console.log('best SCore', gBestScore[selectedLevel].bestTime);
-    console.log('current ', gGame.secsPassed);
-
     if (gGame.secsPassed < gBestScore[selectedLevel].bestTime) {
-        console.log('printing score');
         gBestScore[selectedLevel].bestTime = gGame.secsPassed
         var elBestScore = document.querySelector('.bestScore span')
         elBestScore.innerText = gBestScore[selectedLevel].bestTime
