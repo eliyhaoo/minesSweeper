@@ -13,15 +13,15 @@ var gBoard
 
 var gBestScore = [{
     level: 1,
-    bestTime: 100 + ':' + 100
+    bestTime: 100 + '.' + 100
 },
 {
     level: 2,
-    bestTime: 100 + ':' + 100
+    bestTime: 100 + '.' + 100
 },
 {
     level: 3,
-    bestTime: 100 + ':' + 100
+    bestTime: 100 + '.' + 100
 }
 ]
 
